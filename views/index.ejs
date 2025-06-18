@@ -1,0 +1,138 @@
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-user-clock me-2"></i>Registro de Ponto</h4>
+            </div>
+            <div class="card-body">
+                <form id="formRegistroPonto">
+                    <!-- Campo CPF -->
+                    <div class="mb-2">
+                        <label for="cpf" class="form-label small">CPF:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite seu CPF (apenas números)" maxlength="11" required>
+                        </div>
+                        <div id="cpfFeedback" class="form-text text-danger d-none small">CPF inválido. Por favor, verifique.</div>
+                    </div>
+
+                    <!-- Tipo de Registro -->
+                    <div class="mb-2">
+                        <label class="form-label small">Tipo de Registro:</label>
+                        <div class="d-flex justify-content-between tipo-registro-container">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tipo" id="tipoEntrada" value="entrada" checked>
+                                <label class="form-check-label small" for="tipoEntrada">
+                                    <i class="fas fa-sign-in-alt text-success me-1"></i> Entrada
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tipo" id="tipoSaidaIntervalo" value="saida_intervalo">
+                                <label class="form-check-label small" for="tipoSaidaIntervalo">
+                                    <i class="fas fa-coffee text-warning me-1"></i> Intervalo
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tipo" id="tipoRetornoIntervalo" value="retorno_intervalo">
+                                <label class="form-check-label small" for="tipoRetornoIntervalo">
+                                    <i class="fas fa-undo text-info me-1"></i> Retorno
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tipo" id="tipoSaida" value="saida">
+                                <label class="form-check-label small" for="tipoSaida">
+                                    <i class="fas fa-sign-out-alt text-danger me-1"></i> Saída
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Captura de Foto -->
+                    <div class="mb-2">
+                        <label class="form-label small">Captura de Foto:</label>
+                        <div class="camera-container mb-1">
+                            <div id="cameraPlaceholder" class="text-center p-2">
+                                <i class="fas fa-camera fa-2x mb-1"></i>
+                                <p class="mb-0 small">Clique em "Iniciar Câmera"</p>
+                            </div>
+                            <video id="video" class="d-none" autoplay playsinline></video>
+                            <canvas id="canvas" class="d-none"></canvas>
+                        </div>
+                        <div class="camera-buttons">
+                            <button type="button" id="startCamera" class="btn btn-primary btn-sm">
+                                <i class="fas fa-camera me-1"></i> Iniciar Câmera
+                            </button>
+                            <button type="button" id="capturePhoto" class="btn btn-success btn-sm d-none">
+                                <i class="fas fa-camera-retro me-1"></i> Capturar
+                            </button>
+                            <button type="button" id="resetCamera" class="btn btn-outline-secondary btn-sm d-none">
+                                <i class="fas fa-redo me-1"></i> Reiniciar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Data e Hora -->
+                    <div class="mb-2">
+                        <div class="card bg-light">
+                            <div class="card-body text-center p-2">
+                                <h5 class="card-title mb-1 small fw-bold">Data e Hora Atual</h5>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="me-3">
+                                        <i class="fas fa-calendar-alt text-primary me-1"></i>
+                                        <span id="dataAtual" class="small">--/--/----</span>
+                                    </div>
+                                    <div>
+                                        <i class="fas fa-clock text-primary me-1"></i>
+                                        <span id="horaAtual" class="small">--:--:--</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Envio -->
+                    <div class="d-grid">
+                        <button type="submit" id="btnRegistrar" class="btn btn-success">
+                            <i class="fas fa-check-circle me-1"></i> Registrar Ponto
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmação -->
+<div class="modal fade" id="confirmacaoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i>Registro Confirmado</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p class="mb-0" id="mensagemConfirmacao">Seu ponto foi registrado com sucesso!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal de Erro -->
+<div class="modal fade modal-erro" id="erroModal" tabindex="-1" aria-labelledby="erroModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="erroModalLabel">Erro no Registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <p id="erroMensagem"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

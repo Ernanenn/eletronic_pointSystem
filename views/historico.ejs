@@ -1,0 +1,123 @@
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h4 class="mb-0"><i class="fas fa-history me-2"></i>Histórico de Registros</h4>
+            </div>
+            <div class="card-body">
+                <!-- Formulário de Busca por CPF -->
+                <form action="/historico" method="GET" class="mb-2">
+                    <div class="row g-2">
+                        <div class="col-sm-12 col-md-8">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                <input type="text" class="form-control" name="cpf" placeholder="Buscar por CPF" value="<%= locals.cpf || '' %>" maxlength="11">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 d-flex">
+                            <button type="submit" class="btn btn-primary btn-sm me-1 flex-grow-1">
+                                <i class="fas fa-search me-1"></i> <span class="d-none d-sm-inline">Buscar</span>
+                            </button>
+                            <a href="/historico" class="btn btn-outline-secondary btn-sm flex-grow-1">
+                                <i class="fas fa-redo me-1"></i> <span class="d-none d-sm-inline">Limpar</span>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Mensagem de Erro (se houver) -->
+                <% if (locals.erro) { %>
+                    <div class="alert alert-danger text-center py-2 small" role="alert">
+                        <i class="fas fa-exclamation-triangle me-1"></i> <%= erro %>
+                    </div>
+                <% } %>
+
+                <!-- Tabela de Registros -->
+                <% if (locals.registros && registros.length > 0) { %>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>CPF</th>
+                                    <th>Data</th>
+                                    <th>Hora</th>
+                                    <th>Tipo</th>
+                                    <th>Foto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% registros.forEach(registro => { %>
+                                    <tr>
+                                        <td><%= registro.cpf %></td>
+                                        <td><%= registro.data_formatada %></td>
+                                        <td><%= registro.hora_formatada %></td>
+                                        <td>
+                                            <% if (registro.tipo === 'entrada') { %>
+                                                <span class="badge bg-success"><i class="fas fa-sign-in-alt"></i></span>
+                                            <% } else if (registro.tipo === 'saida_intervalo') { %>
+                                                <span class="badge bg-warning text-dark"><i class="fas fa-coffee"></i></span>
+                                            <% } else if (registro.tipo === 'retorno_intervalo') { %>
+                                                <span class="badge bg-info"><i class="fas fa-undo"></i></span>
+                                            <% } else { %>
+                                                <span class="badge bg-danger"><i class="fas fa-sign-out-alt"></i></span>
+                                            <% } %>
+                                        </td>
+                                        <td>
+                                            <% if (registro.foto_path) { %>
+                                                <button type="button" class="btn btn-sm btn-outline-primary btn-sm ver-foto" data-bs-toggle="modal" data-bs-target="#modalFoto" data-foto="<%= registro.foto_path %>">
+                                                    <i class="fas fa-image"></i>
+                                                </button>
+                                            <% } else { %>
+                                                <span class="badge bg-secondary">-</span>
+                                            <% } %>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% } else if (!locals.erro) { %> <!-- Mostra esta mensagem apenas se não houver erro -->
+                    <div class="alert alert-info text-center py-2 small">
+                        <i class="fas fa-info-circle me-1"></i>
+                        <% if (locals.cpf) { %>
+                            Nenhum registro encontrado para o CPF: <%= cpf %>
+                        <% } else { %>
+                            Nenhum registro encontrado. Utilize o formulário acima para buscar.
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para exibir a foto -->
+<div class="modal fade" id="modalFoto" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-image me-2"></i>Foto do Registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body text-center p-0">
+                <img id="fotoModal" src="" class="img-fluid" alt="Foto do registro">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Configurar o modal para exibir a foto
+        const botoesFoto = document.querySelectorAll('.ver-foto');
+        botoesFoto.forEach(botao => {
+            botao.addEventListener('click', function() {
+                const fotoPath = this.getAttribute('data-foto');
+                document.getElementById('fotoModal').src = fotoPath;
+            });
+        });
+    });
+</script>

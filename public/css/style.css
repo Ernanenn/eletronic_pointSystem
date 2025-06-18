@@ -1,0 +1,676 @@
+/* Ajustes para reduzir margens e espaçamentos */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Reduzir espaçamento do conteúdo principal */
+main.container {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Reduzir altura do navbar */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 28, 91, 0.1);
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+/* Reduzir espaçamento dos cards */
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+    border: none;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0, 28, 91, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 28, 91, 0.12);
+}
+
+.card-header {
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    border-bottom: none;
+}
+
+.card-body {
+    padding: 0.8rem;
+}
+
+/* Reduzir tamanho da câmera */
+.camera-container {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 2px dashed #001C5B;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Centralizar botões da câmera */
+.camera-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    gap: 0.5rem;
+}
+
+/* Reduzir espaçamento dos elementos do formulário */
+.mb-3,
+.mb-4 {
+    margin-bottom: 0.6rem !important;
+}
+
+/* Reduzir tamanho dos botões */
+.btn {
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.8rem;
+}
+
+/* Reduzir tamanho do footer */
+footer {
+    background-color: #001C5B !important;
+    color: #FFFFFF !important;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+}
+
+/* Ajustar tamanho dos inputs */
+.form-control {
+    padding: 0.4rem 0.8rem;
+}
+
+/* Reduzir espaçamento da tabela */
+.table th,
+.table td {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+}
+
+/* Reduzir tamanho dos ícones */
+.fa-3x {
+    font-size: 2em;
+}
+
+/* Ajustar tamanho do texto */
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+/* Manter as cores originais */
+.navbar-dark {
+    background-color: #001C5B !important;
+}
+
+.card-header.bg-primary {
+    background-color: #001C5B !important;
+}
+
+.btn-primary {
+    background-color: #001C5B;
+    border-color: #001C5B;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #00164a;
+    border-color: #00164a;
+    box-shadow: 0 0 0 0.25rem rgba(0, 28, 91, 0.25);
+}
+
+.btn-success {
+    background-color: #00E205;
+    border-color: #00E205;
+    color: #FFFFFF;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+    background-color: #00c204;
+    border-color: #00c204;
+    box-shadow: 0 0 0 0.25rem rgba(0, 226, 5, 0.25);
+}
+
+.btn-outline-secondary {
+    color: #001C5B;
+    border-color: #001C5B;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #001C5B;
+    color: #FFFFFF;
+}
+
+/* Estilos para o formulário */
+.form-control {
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #001C5B;
+    box-shadow: 0 0 0 0.25rem rgba(0, 28, 91, 0.25);
+}
+
+.input-group-text {
+    background-color: #001C5B;
+    color: #FFFFFF;
+    border-color: #001C5B;
+    border-radius: 8px 0 0 8px;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #001C5B;
+    margin-bottom: 0.5rem;
+}
+
+.form-check-input:checked {
+    background-color: #00E205;
+    border-color: #00E205;
+}
+
+/* Estilos para o modal */
+.modal-content {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 28, 91, 0.2);
+}
+
+.modal-header {
+    background-color: #001C5B;
+    color: #FFFFFF;
+    padding: 1rem 1.5rem;
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+    padding: 1rem 1.5rem;
+}
+
+/* Estilos para a tabela de histórico */
+.table {
+    vertical-align: middle;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table th {
+    font-weight: 600;
+    color: #001C5B;
+    background-color: rgba(0, 28, 91, 0.05);
+    border-bottom: 2px solid #001C5B;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 28, 91, 0.02);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 226, 5, 0.05);
+}
+
+/* Badges personalizados */
+.badge.bg-success {
+    background-color: #00E205 !important;
+}
+
+.badge.bg-danger {
+    background-color: #ff3547 !important;
+}
+
+.badge.bg-warning {
+    background-color: #ffbb33 !important;
+}
+
+.badge.bg-info {
+    background-color: #33b5e5 !important;
+}
+
+/* Footer */
+footer {
+    background-color: #001C5B !important;
+    color: #FFFFFF !important;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+}
+
+footer p {
+    opacity: 0.8;
+}
+
+/* Estilos responsivos */
+/* Tablets (768px e abaixo) */
+@media (max-width: 768px) {
+    .camera-container {
+        width: 160px;
+        height: 160px;
+    }
+
+    #video,
+    #canvas {
+        max-height: 160px;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .card-header {
+        padding: 0.5rem 0.8rem;
+    }
+
+    .card-body {
+        padding: 0.6rem;
+    }
+
+    .form-control {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .modal-dialog {
+        max-width: 90%;
+        margin: 1rem auto;
+    }
+
+    /* Ajuste para os tipos de registro em linha */
+    .form-check {
+        margin-right: 5px;
+    }
+
+    .form-check-label {
+        font-size: 0.75rem;
+    }
+}
+
+/* Celulares (576px e abaixo) */
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .camera-container {
+        width: 140px;
+        height: 140px;
+    }
+
+    #video,
+    #canvas {
+        max-height: 140px;
+    }
+
+    .btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
+
+    h5 {
+        font-size: 0.9rem;
+    }
+
+    .card-header {
+        padding: 0.4rem 0.6rem;
+    }
+
+    .card-body {
+        padding: 0.5rem;
+    }
+
+    /* Ajuste para os tipos de registro em grid para celulares */
+    .tipo-registro-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+
+    /* Ajuste para o formulário de busca no histórico */
+    .col-md-8,
+    .col-md-4 {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Ajuste para a tabela de histórico */
+    .table-responsive {
+        font-size: 0.75rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.25rem 0.4rem;
+        font-size: 0.75rem;
+    }
+
+    /* Ajuste para o modal */
+    .modal-header,
+    .modal-footer {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .modal-title {
+        font-size: 1rem;
+    }
+
+    /* Ajuste para o footer */
+    footer p {
+        font-size: 0.8rem;
+    }
+
+    /* Ajuste para o container principal */
+    .container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    /* Reduzir espaçamento entre elementos */
+    .mb-2 {
+        margin-bottom: 0.4rem !important;
+    }
+}
+
+/* Smartphones muito pequenos (375px e abaixo) */
+@media (max-width: 375px) {
+    .navbar-brand {
+        font-size: 0.9rem;
+    }
+
+    .camera-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    #video,
+    #canvas {
+        max-height: 120px;
+    }
+
+    .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+    }
+
+    /* Ajuste para os tipos de registro em grid para celulares pequenos */
+    .tipo-registro-container {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+    }
+
+    /* Reduzir ainda mais o espaçamento */
+    .card-body {
+        padding: 0.4rem;
+    }
+
+    .form-control {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    /* Ajuste para o container principal */
+    .container {
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
+    }
+}
+
+/* Estilos para o modal de erro */
+.modal-erro .modal-header {
+    border-bottom-color: #dc3545;
+}
+
+.modal-erro .modal-footer {
+    border-top-color: #dc3545;
+}
+
+/* Animação para o spinner de carregamento */
+.fa-spin {
+    animation: fa-spin 1s infinite linear;
+}
+
+@keyframes fa-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #001C5B !important;
+    color: #FFFFFF !important;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+}
+
+footer p {
+    opacity: 0.8;
+}
+
+/* Estilos responsivos */
+/* Tablets (768px e abaixo) */
+@media (max-width: 768px) {
+    .camera-container {
+        width: 160px;
+        height: 160px;
+    }
+
+    #video,
+    #canvas {
+        max-height: 160px;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .card-header {
+        padding: 0.5rem 0.8rem;
+    }
+
+    .card-body {
+        padding: 0.6rem;
+    }
+
+    .form-control {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .modal-dialog {
+        max-width: 90%;
+        margin: 1rem auto;
+    }
+
+    /* Ajuste para os tipos de registro em linha */
+    .form-check {
+        margin-right: 5px;
+    }
+
+    .form-check-label {
+        font-size: 0.75rem;
+    }
+}
+
+/* Celulares (576px e abaixo) */
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .camera-container {
+        width: 140px;
+        height: 140px;
+    }
+
+    #video,
+    #canvas {
+        max-height: 140px;
+    }
+
+    .btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
+
+    h5 {
+        font-size: 0.9rem;
+    }
+
+    .card-header {
+        padding: 0.4rem 0.6rem;
+    }
+
+    .card-body {
+        padding: 0.5rem;
+    }
+
+    /* Ajuste para os tipos de registro em grid para celulares */
+    .tipo-registro-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+
+    /* Ajuste para o formulário de busca no histórico */
+    .col-md-8,
+    .col-md-4 {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Ajuste para a tabela de histórico */
+    .table-responsive {
+        font-size: 0.75rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.25rem 0.4rem;
+        font-size: 0.75rem;
+    }
+
+    /* Ajuste para o modal */
+    .modal-header,
+    .modal-footer {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .modal-title {
+        font-size: 1rem;
+    }
+
+    /* Ajuste para o footer */
+    footer p {
+        font-size: 0.8rem;
+    }
+
+    /* Ajuste para o container principal */
+    .container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    /* Reduzir espaçamento entre elementos */
+    .mb-2 {
+        margin-bottom: 0.4rem !important;
+    }
+}
+
+/* Smartphones muito pequenos (375px e abaixo) */
+@media (max-width: 375px) {
+    .navbar-brand {
+        font-size: 0.9rem;
+    }
+
+    .camera-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    #video,
+    #canvas {
+        max-height: 120px;
+    }
+
+    .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+    }
+
+    /* Ajuste para os tipos de registro em grid para celulares pequenos */
+    .tipo-registro-container {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+    }
+
+    /* Reduzir ainda mais o espaçamento */
+    .card-body {
+        padding: 0.4rem;
+    }
+
+    .form-control {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    /* Ajuste para o container principal */
+    .container {
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
+    }
+}
